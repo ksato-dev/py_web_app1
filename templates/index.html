@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Game</title>
+</head>
+
+<body>
+    <div>
+        <!-- <br> -->
+        <h1>Easy-Make10</h1>
+        <hr>
+<!--gif--> 
+        <!-- <img src="image/janken.gif" alt="janken_boy" style="width: 150px;"> -->
+<!--お題の数字-->
+        <h1>次のお題：{{num_s}}<br></h1>
+<!--自分の手の入力部分-->
+        <form action = "./" method = "POST" enctype = "multipart/form-data">
+            <p>can create 10?</p>
+                <div>
+                    <input type="radio" name="your_answer" id="r1" value=0>
+                    <label for="r1">Yes</label>
+                </div>
+                <div>
+                    <input type="radio" name="your_answer" id="r2" value=1>
+                    <label for="r2">No</label>
+                </div>
+            <input type = "submit" value="send your answer">
+        </form>
+    </div>
+    {% if error_message %}
+        <hr>
+        <h2><b>{{ error_message }}</b></h2>
+    {% endif %}
+<!--勝負結果-->
+        <hr>
+        {% if result %}
+        <h1>{{result}}<br></h1>
+        <!-- <img src="{{ result_img }}" style="margin-top: 0px; width: 150px"> -->
+        <br>
+        {% endif %}
+        <center>
+        <table>
+            <h1>お題：{{pre_num_s}}<br></h1>
+            <td>
+                {% if your_ans_s %}
+                <p>あなた: {{your_ans_s}},</p>
+                {% endif %}
+            </td>
+            <td>
+                {% if correct_ans_s %}
+                <p>正解: {{correct_ans_s}},</p>
+                {% endif %}
+            </td>
+            <td>
+                {% if formula_s %}
+                <p>計算例: {{formula_s}}</p>
+                {% endif %}
+            </td>
+        </table>
+        </center>
+    <small>&copy; 2021 Studio Coforest.</small>
+</body>
+</html>
