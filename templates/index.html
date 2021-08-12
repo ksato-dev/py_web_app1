@@ -16,15 +16,15 @@
         <!-- <br> -->
         <h1>Easy-Make10</h1>
         <hr>
-<!--gif--> 
-        <!-- <img src="image/janken.gif" alt="janken_boy" style="width: 150px;"> -->
-<!--お題の数字-->
+        <!--お題の数字-->
         {% if num_s %}
+        <!--二回目以降-->
         <h1>お題：{{num_s}}<br></h1>
         {% else %}
+        <!--初期値-->
         <h1>お題：1234<br></h1>
         {% endif %}
-<!--自分の答えの入力部分-->
+        <!--自分の答えの入力部分-->
         <form action = "./" method = "POST" enctype = "multipart/form-data">
             <p>can create 10?</p>
                 <div>
@@ -46,7 +46,6 @@
         <hr>
         {% if result %}
         <h1>{{result}}<br></h1>
-        <!-- <img src="{{ result_img }}" style="margin-top: 0px; width: 150px"> -->
         <br>
         {% endif %}
         <center>
