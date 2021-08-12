@@ -19,8 +19,12 @@
 <!--gif--> 
         <!-- <img src="image/janken.gif" alt="janken_boy" style="width: 150px;"> -->
 <!--お題の数字-->
-        <h1>次のお題：{{num_s}}<br></h1>
-<!--自分の手の入力部分-->
+        {% if num_s %}
+        <h1>お題：{{num_s}}<br></h1>
+        {% else %}
+        <h1>お題：1234<br></h1>
+        {% endif %}
+<!--自分の答えの入力部分-->
         <form action = "./" method = "POST" enctype = "multipart/form-data">
             <p>can create 10?</p>
                 <div>
@@ -47,7 +51,7 @@
         {% endif %}
         <center>
         <table>
-            <h1>お題：{{pre_num_s}}<br></h1>
+            <h1>前のお題：{{pre_num_s}}<br></h1>
             <td>
                 {% if your_ans_s %}
                 <p>あなた: {{your_ans_s}},</p>

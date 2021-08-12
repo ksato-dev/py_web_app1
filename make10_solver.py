@@ -12,10 +12,8 @@ def formula_str_2_value(formula_str):
     return result
 
 
-def make10(abcd):
-# if __name__ == "__main__":
-    # abcd = input()
-    n = len(abcd)
+def make10(num_str):
+    n = len(num_str)
 
     ret_can_make10 = False
     ret_formula_str = "Nothing"
@@ -34,7 +32,7 @@ def make10(abcd):
             else:
                 ope = "-"
 
-            curr_formula_str = curr_formula_str + ope + abcd[c_id]
+            curr_formula_str = curr_formula_str + ope + num_str[c_id]
 
         if formula_str_2_value(curr_formula_str) == 10:
             print(curr_formula_str + "=10")
@@ -43,3 +41,12 @@ def make10(abcd):
             break
 
     return ret_can_make10, ret_formula_str
+
+if __name__ == "__main__":
+    num_str = input()
+    ret_flag, ret_str = make10(num_str)
+    
+    if ret_flag:
+        print("Solved")
+    else:
+        print("Unsolved")

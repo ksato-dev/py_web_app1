@@ -18,22 +18,8 @@ app = Flask(__name__)
 pre_num_str = "1234"
 num_str = pre_num_str
 
-# フロントエンドでフォルダを認識させるためのおまじないコード
-SAVE_DIR = "image"
-if not os.path.isdir(SAVE_DIR):
-    os.mkdir(SAVE_DIR)
-
-# ここで認識させている
-
-
-@app.route("/image/<path:filepath>")
-def send_js(filepath):
-    return send_from_directory(SAVE_DIR, filepath)
-
 
 # メインルーチン
-
-
 @app.route("/", methods=["GET", "POST"])
 def upload_file():
     if request.method == "GET":
@@ -41,15 +27,12 @@ def upload_file():
 
     if request.method == "POST":
 
-        # myhand = int(request.form.get('myhand_path'))
         your_ans_id_str = request.form.get("your_answer")
 
         if your_ans_id_str:
             your_ans_id = int(your_ans_id_str)
             print("your_ans:", your_ans_id)
 
-            # num_list = [random.randint(0, 9) for _ in range(4)]
-            # num_str = "9234"
             your_ans_flag = None
             if your_ans_id == 0:
                 your_ans_flag = True
@@ -73,7 +56,7 @@ def upload_file():
                 result = "不正解！"
             
             # 次の値をセット
-            num_str = str(random.randint(0, 9999)).zfill(4)
+            num_str = str(random.randint(0, 9999)).zfill(4) # zero-padding
 
             return render_template(
                 "index.html",
